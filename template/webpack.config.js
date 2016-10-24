@@ -37,6 +37,10 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.styl$/,
+        loader: ['style', 'css', 'stylus']
       }
     ]
   },
