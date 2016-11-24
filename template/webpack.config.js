@@ -40,7 +40,7 @@ module.exports = {
       },
       {
         test: /\.styl$/,
-        loader: ['style', 'css', 'stylus']
+        loader: ['style-loader', 'css-loader', 'stylus-loader']
       }
     ]
   },
