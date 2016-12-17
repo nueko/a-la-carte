@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "vue": "^2.3.3",
-    "vuetify": "^0.7.4"
+    "vuetify": "^0.7.*"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
