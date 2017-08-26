@@ -106,10 +106,6 @@
   }
 </script>
 
-<style lang="stylus">
-  @import './stylus/main'
-</style>
-
-<style lang="stylus">
+style lang="stylus">
   @import './stylus/main'
 </style>
