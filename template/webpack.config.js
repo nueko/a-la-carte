@@ -9,7 +9,9 @@ module.exports = {
     filename: 'build.js'
   },
   resolve: {
+    extensions: ['.js', '.vue'],
     alias: {
+      'vue$': 'vue/dist/vue.esm.js',
       'public': path.resolve(__dirname, './public')
     }
   },
@@ -48,11 +50,6 @@ module.exports = {
         loader: ['style-loader', 'css-loader', 'stylus-loader']
       }
     ]
-  },
-  resolve: {
-    alias: {
-      'vue$': 'vue/dist/vue.esm.js'
-    }
   },
   devServer: {
     historyApiFallback: true,
