@@ -29,14 +29,21 @@ module.exports = {
             'scss': 'vue-style-loader!css-loader!sass-loader',
             'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
             {{/sass}}
-          }
+          },
+          include: [
+            path.resolve(__dirname, './src'),
+            path.resolve(__dirname, './node_modules/vuetify')
+          ]
           // other vue-loader options go here
         }
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        include: [
+          path.resolve(__dirname, './src'),
+          path.resolve(__dirname, './node_modules/vuetify')
+        ]
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
