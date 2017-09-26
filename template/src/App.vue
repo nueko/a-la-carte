@@ -1,10 +1,12 @@
 <template>
-  <v-app light>
+<v-app light>
     <v-navigation-drawer
       persistent
       :mini-variant="miniVariant"
       :clipped="clipped"
       v-model="drawer"
+      enable-resize-watcher
+      app
     >
       <v-list>
         <v-list-tile 
@@ -21,23 +23,23 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar fixed>
-      <v-toolbar-side-icon @click.native.stop="drawer = !drawer"></v-toolbar-side-icon>
+    <v-toolbar fixed app>
+      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-btn 
         icon
-        @click.native.stop="miniVariant = !miniVariant"
+        @click.stop="miniVariant = !miniVariant"
       >
         <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
       </v-btn>
       <v-btn
         icon
-        @click.native.stop="clipped = !clipped"
+        @click.stop="clipped = !clipped"
       >
         <v-icon>web</v-icon>
       </v-btn>
       <v-btn
         icon
-        @click.native.stop="fixed = !fixed"
+        @click.stop="fixed = !fixed"
       >
         <v-icon>remove</v-icon>
       </v-btn>
@@ -45,32 +47,35 @@
       <v-spacer></v-spacer>
       <v-btn
         icon
-        @click.native.stop="rightDrawer = !rightDrawer"
+        @click.stop="rightDrawer = !rightDrawer"
       >
         <v-icon>menu</v-icon>
       </v-btn>
     </v-toolbar>
     <main>
-      <v-container fluid>
-        <v-slide-y-transition mode="out-in">
-          <v-layout column align-center>
-            <img src="/public/v.png" alt="Vuetify.js" class="mb-5" />
-            <blockquote>
-              &#8220;First, solve the problem. Then, write the code.&#8221;
-              <footer>
-                <small>
-                  <em>&mdash;John Johnson</em>
-                </small>
-              </footer>
-            </blockquote>
-          </v-layout>
-        </v-slide-y-transition>
-      </v-container>
+      <v-content>
+        <v-container fluid>
+          <v-slide-y-transition mode="out-in">
+            <v-layout column align-center>
+              <img src="/public/v.png" alt="Vuetify.js" class="mb-5" />
+              <blockquote>
+                &#8220;First, solve the problem. Then, write the code.&#8221;
+                <footer>
+                  <small>
+                    <em>&mdash;John Johnson</em>
+                  </small>
+                </footer>
+              </blockquote>
+            </v-layout>
+          </v-slide-y-transition>
+        </v-container>
+      </v-content>
     </main>
     <v-navigation-drawer
       temporary
       :right="right"
       v-model="rightDrawer"
+      app
     >
       <v-list>
         <v-list-tile @click.native="right = !right">
@@ -81,7 +86,7 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-footer :fixed="fixed">
+    <v-footer :fixed="fixed" app>
       <span>&copy; 2017</span>
     </v-footer>
   </v-app>

@@ -1,10 +1,12 @@
 var path = require('path')
 var webpack = require('webpack')
 
+var resolve = (p) => path.resolve(__dirname, p)
+
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: resolve('./dist'),
     publicPath: '/dist/',
     filename: 'build.js'
   },
@@ -12,7 +14,7 @@ module.exports = {
     extensions: ['.js', '.vue'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      'public': path.resolve(__dirname, './public')
+      'public': resolve('./public')
     }
   },
   module: {
@@ -29,21 +31,13 @@ module.exports = {
             'scss': 'vue-style-loader!css-loader!sass-loader',
             'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
             {{/sass}}
-          },
-          include: [
-            path.resolve(__dirname, './src'),
-            path.resolve(__dirname, './node_modules/vuetify')
-          ]
-          // other vue-loader options go here
+          }
         }
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [
-          path.resolve(__dirname, './src'),
-          path.resolve(__dirname, './node_modules/vuetify')
-        ]
+        exclude: /node_modules/
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -54,7 +48,12 @@ module.exports = {
       },
       {
         test: /\.styl$/,
-        loader: ['style-loader', 'css-loader', 'stylus-loader']
+        loader: ['style-loader', 'css-loader', 'stylus-loader', {
+          loader: 'vuetify-loader',
+          options: {
+            theme: resolve('./src/stylus/theme.styl')
+          }
+        }]
       }
     ]
   },
